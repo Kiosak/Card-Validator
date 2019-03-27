@@ -1,0 +1,209 @@
+$primary-color: #f0f0f0;
+$text-dark: #474545;
+$text-light: #fff;
+$text-light-blue: #a2cafd;
+$text-dark-blue: #0f60c9;
+$validator__card-background: #1d8eff;
+$validator__price-background: #fff;
+$input-light-blue: #65adf5;
+$font-big: 1.5em;
+$font-md: 1.2em;
+
+* {
+  box-sizing: border-box;
+}
+%box {
+  padding: 20px;
+}
+%card-input {
+  color: $text-light;
+  background-color: $input-light-blue;
+  font-size: $font-md;
+  padding: 5px 10px;
+  border: none;
+}
+.alert {
+  border: 2px solid grey;
+  border-radius: 5px;
+  position: absolute;
+  top: 100%;
+  padding: 5px;
+}
+.alert-danger {
+  background-color: #e97b7b;
+  border-color: #eb4646;
+}
+.text-center {
+  text-align: center;
+}
+.validator {
+  color: $text-dark;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+
+  .validator__background {
+    background: #0c7ff4;
+    position: absolute;
+    transform: skewY(165deg);
+    top: 16%;
+    height: 50%;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .validator__price {
+    @extend %box;
+    background: $validator__price-background;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0 7px 30px #111;
+    position: absolute;
+    left: 22%;
+    top: 22%;
+    min-height: 350px;
+    width: 600px;
+    z-index: 2;
+
+    .validator__price-body {
+      color: $text-dark;
+      margin-top: 40px;
+      width: 220px;
+
+      h3,
+      h5 {
+        text-align: center;
+        text-transform: uppercase;
+        margin: 10px 0;
+      }
+
+      .validator__price-total {
+        h3 {
+          color: $text-dark-blue;
+          font-size: 30px;
+        }
+      }
+
+      .validator__price-item {
+        font-weight: 600;
+        span {
+          color: $text-dark-blue;
+          float: right;
+        }
+      }
+
+      .validator__price-btn {
+        margin-top: 50px;
+        text-align: center;
+        button {
+          color: $text-dark-blue;
+          text-transform: uppercase;
+          background-color: $primary-color;
+          border: 1px solid $text-dark-blue;
+          border-radius: 20px;
+          outline: none;
+          cursor: pointer;
+          height: 40px;
+          width: 150px;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s;
+          &:hover {
+            background-color: $text-dark-blue;
+            border-color: #fff;
+            color: #fff;
+            box-shadow: 0 0 20px $text-dark;
+          }
+          &:active {
+            transform: translateY(3px);
+          }
+        }
+      }
+    }
+  }
+
+  .validator__card {
+    @extend %box;
+    background: $validator__card-background;
+    color: $text-light;
+    border-radius: 10px;
+    box-shadow: 0 7px 40px #111;
+    position: absolute;
+    left: 45%;
+    top: 26%;
+    text-transform: capitalize;
+    height: 270px;
+    width: 490px;
+    z-index: 3;
+
+    div {
+      margin-bottom: 20px;
+    }
+
+    input {
+      @extend %card-input;
+      height: 40px;
+      text-align: center;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      &:hover,
+      &:focus {
+        background-color: $primary-color;
+        color: $text-dark;
+      }
+    }
+    input.ng-invalid {
+      &.ng-dirty {
+        border: solid red 2px;
+      }
+    }
+
+    p {
+      color: $text-light-blue;
+      margin-bottom: 5px;
+    }
+
+    .validator__card-number,
+    .validator__card-footer-date,
+    .validator__card-footer-cvv {
+      position: relative;
+    }
+
+    .validator__card-header {
+      margin-bottom: 30px;
+      span {
+        font-size: $font-big;
+      }
+      i {
+        transform: scale(4);
+        margin: 10px 20px;
+      }
+    }
+
+    .validator__card-number {
+      input {
+        width: 60%;
+      }
+    }
+
+    .validator__card-footer {
+      .validator__card-footer-date {
+        width: 60%;
+      }
+      .validator__card-footer-cvv {
+        input {
+          width: 80px;
+          margin-right: 30px;
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+}
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+

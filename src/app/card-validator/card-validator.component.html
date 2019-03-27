@@ -1,0 +1,63 @@
+<div class="validator">
+  <h2 class="text-center">{{cardValid}}</h2>
+  <div class="validator__background"></div>
+
+  <div class="validator__price">
+    <div class="validator__price-body">
+      <div class="validator__price-total">
+        <h5>Total</h5>
+        <h3>$893</h3>
+      </div>
+      <h5>Detail</h5>
+      <div class="validator__price-item">
+        <p>
+          Ipad Pro
+          <span>$733</span>
+        </p>
+      </div>
+      <div class="validator__price-item">
+        <p>
+          Ipad Pro
+          <span>$733</span>
+        </p>
+      </div>
+      <div class="validator__price-btn">
+        <button type="submit" (click)="onSubmit(form)">Pay now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="validator__card">
+    <form id="cardForm" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div class="validator__card-header">
+        <span>owner's name</span>
+        <i class="{{cardType}} float-right"></i>
+      </div>
+      <div class="validator__card-number">
+        <p><label for="cc-number">credit card number</label></p>
+        <input id="cc-number" formControlName="creditCard" type="tel" autocomplete="cc-number" ccNumber
+          (ngModelChange)="cardTypeFunc($event)" required name="creditCardel">
+        <div [hidden]="alerts.creditCard" class="alert alert-danger">
+          Сard number incorrect! Try again
+        </div>
+      </div>
+      <div class="validator__card-footer">
+        <div class="validator__card-footer-date float-left">
+          <p><label for="cc-exp-date">Expiration</label></p>
+          <input id="cc-exp-date" formControlName="expirationDate" type="tel" autocomplete="cc-exp" ccExp required>
+          <div [hidden]="alerts.expirationDate" class="alert alert-danger">
+            Date incorrect! Try again
+          </div>
+        </div>
+        <div class="validator__card-footer-cvv float-right">
+          <p><label for="cc-cvc">CCV</label></p>
+          <input id="cc-cvc" formControlName="cvc" type="tel" autocomplete="cc-exp" ccCVC required>
+          <div [hidden]="alerts.cvc" class="alert alert-danger">
+            CVV incorrect! Try again
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
